@@ -15,20 +15,16 @@ public class Problem121BestTime {
 //Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
 class Solution {
     public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
-
-        List<Position> vals = new ArrayList<>();
-
-        for (int j = 1; j < prices.length; j++) {
-            if (prices[j] > prices[0]) {
-                maxProfit = Math.max(maxProfit, prices[j] - prices[0]);
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price;
+            } else {
+                maxProfit = Math.max(maxProfit, price - minPrice);
             }
         }
         return maxProfit;
     }
 }
 
-class Position {
-    int maxProfit;
-    int index;
-}
