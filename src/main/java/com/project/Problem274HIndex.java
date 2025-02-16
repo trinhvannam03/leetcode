@@ -22,7 +22,6 @@ class Solution274HIndex {
                 count[citation]++;
             }
         }
-
         int total = 0;
         for (int i = n; i >= 0; i--) {
             total += count[i];
